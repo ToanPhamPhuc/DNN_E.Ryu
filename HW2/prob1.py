@@ -7,8 +7,8 @@ Y = 2 * np.random.randint(2, size = N)
 
 theta = np.zeros(p)
 
-epochs = 100 
-learning_rate = 0.1    
+epochs = 50 
+learning_rate = 0.01    
 
 for epoch in range(epochs):
     for i in range(N):
@@ -19,3 +19,6 @@ for epoch in range(epochs):
         theta -= learning_rate * gradient                               
         
 print("Final theta:", theta)        
+print("Final loss:", np.mean(np.log(1 + np.exp(-Y * (np.dot(X, theta))))))
+print("Final accuracy:", np.mean((np.dot(X, theta) > 0) == Y))
+print("Final predictions:", ((np.dot(X, theta))> 0).astype(int))
